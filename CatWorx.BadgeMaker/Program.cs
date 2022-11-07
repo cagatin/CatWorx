@@ -1,10 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 
 namespace CatWorx.BadgeMaker
 {
     class Util 
     {
+        // Prints all Employee data within the passed in List.
         public static void PrintEmployees(List<Employee> employees)
         {
             for (int i = 0; i < employees.Count; i++)
@@ -19,7 +21,7 @@ namespace CatWorx.BadgeMaker
                 );
             }
         }
-        // this will return a list of employees
+        // Returns a List of Employees based on user Input
         public static List<Employee> GetEmployees()
         {
             // Create and list to store employee names
@@ -49,6 +51,15 @@ namespace CatWorx.BadgeMaker
             }
             return employees;
         }
+
+        // Creates a CSV File
+        public static void MakeCSV(List<Employee> employees) {
+            // Check to see if a "data" folder exists
+            if(!Directory.Exists("data")) {
+                // If the directory does not exist, create it.
+                Directory.CreateDirectory("data");
+            }
+        }
     }
     class Program
     {
@@ -57,6 +68,7 @@ namespace CatWorx.BadgeMaker
             // Create and list to store employee names
             List<Employee> employees = Util.GetEmployees();
             Util.PrintEmployees(employees);
+            Util.MakeCSV(employees);
         }
     }
 }
