@@ -7,9 +7,11 @@ namespace CatWorx.BadgeMaker
         public int Id;
         public string PhotoURL;
 
-        public Employee(string first, string last) {
+        public Employee(string first, string last, int id, string url) {
             FirstName = first;
             LastName = last;
+            Id = id;
+            PhotoURL = url;
         }
 
         public string getFullName() {
