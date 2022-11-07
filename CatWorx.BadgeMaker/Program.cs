@@ -3,10 +3,24 @@ using System.Collections.Generic;
 
 namespace CatWorx.BadgeMaker
 {
-    class Program
+    class Util 
     {
+        public static void PrintEmployees(List<Employee> employees)
+        {
+            for (int i = 0; i < employees.Count; i++)
+            {
+                string template = "{0, -10}\t{1, -20}\t{2}";
+                Console.WriteLine(String.Format(
+                    template, 
+                    employees[i].getId(),
+                    employees[i].getFullName(), 
+                    employees[i].getPhotoUrl()
+                    )
+                );
+            }
+        }
         // this will return a list of employees
-        static List<Employee> GetEmployees()
+        public static List<Employee> GetEmployees()
         {
             // Create and list to store employee names
             List<Employee> employees = new List<Employee>();
@@ -35,25 +49,14 @@ namespace CatWorx.BadgeMaker
             }
             return employees;
         }
-        static void PrintEmployees(List<Employee> employees)
-        {
-            for (int i = 0; i < employees.Count; i++)
-            {
-                string template = "{0, -10}\t{1, -20}\t{2}";
-                Console.WriteLine(String.Format(
-                    template, 
-                    employees[i].getId(),
-                     employees[i].getFullName(), 
-                     employees[i].getPhotoUrl()
-                     )
-                );
-            }
-        }
+    }
+    class Program
+    {
         static void Main(string[] args)
         {
             // Create and list to store employee names
-            List<Employee> employees = GetEmployees();
-            PrintEmployees(employees);
+            List<Employee> employees = Util.GetEmployees();
+            Util.PrintEmployees(employees);
         }
     }
 }
