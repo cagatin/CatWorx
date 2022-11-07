@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/felixgilbertcagatin/Desktop/CatWorx/CatWorx.BadgeMaker/CatWorx.BadgeMaker.csproj": {}
+    "C:\\Users\\cagat\\Desktop\\CatWorx\\CatWorx.BadgeMaker\\CatWorx.BadgeMaker.csproj": {}
   },
   "projects": {
-    "/Users/felixgilbertcagatin/Desktop/CatWorx/CatWorx.BadgeMaker/CatWorx.BadgeMaker.csproj": {
+    "C:\\Users\\cagat\\Desktop\\CatWorx\\CatWorx.BadgeMaker\\CatWorx.BadgeMaker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/felixgilbertcagatin/Desktop/CatWorx/CatWorx.BadgeMaker/CatWorx.BadgeMaker.csproj",
+        "projectUniqueName": "C:\\Users\\cagat\\Desktop\\CatWorx\\CatWorx.BadgeMaker\\CatWorx.BadgeMaker.csproj",
         "projectName": "CatWorx.BadgeMaker",
-        "projectPath": "/Users/felixgilbertcagatin/Desktop/CatWorx/CatWorx.BadgeMaker/CatWorx.BadgeMaker.csproj",
-        "packagesPath": "/Users/felixgilbertcagatin/.nuget/packages/",
-        "outputPath": "/Users/felixgilbertcagatin/Desktop/CatWorx/CatWorx.BadgeMaker/obj/",
+        "projectPath": "C:\\Users\\cagat\\Desktop\\CatWorx\\CatWorx.BadgeMaker\\CatWorx.BadgeMaker.csproj",
+        "packagesPath": "C:\\Users\\cagat\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cagat\\Desktop\\CatWorx\\CatWorx.BadgeMaker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/felixgilbertcagatin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\cagat\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[2.88.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -53,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

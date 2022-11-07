@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using SkiaSharp;
 
 namespace CatWorx.BadgeMaker
 {
-    class Util 
+    class Util
     {
         // Prints all Employee data within the passed in List.
         public static void PrintEmployees(List<Employee> employees)
@@ -13,9 +14,9 @@ namespace CatWorx.BadgeMaker
             {
                 string template = "{0, -10}\t{1, -20}\t{2}";
                 Console.WriteLine(String.Format(
-                    template, 
+                    template,
                     employees[i].getId(),
-                    employees[i].getFullName(), 
+                    employees[i].getFullName(),
                     employees[i].getPhotoUrl()
                     )
                 );
@@ -40,7 +41,7 @@ namespace CatWorx.BadgeMaker
                 string lastName = Console.ReadLine() ?? "";
 
                 Console.WriteLine("Please enter an ID number:");
-                int id = Int32.Parse(Console.ReadLine()?? "");
+                int id = Int32.Parse(Console.ReadLine() ?? "");
 
                 Console.WriteLine("Please enter a photo URL:");
                 string url = Console.ReadLine() ?? "";
@@ -53,24 +54,28 @@ namespace CatWorx.BadgeMaker
         }
 
         // Creates a CSV File
-        public static void MakeCSV(List<Employee> employees) {
+        public static void MakeCSV(List<Employee> employees)
+        {
             // Check to see if a "data" folder exists
-            if(!Directory.Exists("data")) {
+            if (!Directory.Exists("data"))
+            {
                 // If the directory does not exist, create it.
                 Directory.CreateDirectory("data");
             }
 
             // Use StreamWriter class to create a employees csv file
-            using (StreamWriter file = new StreamWriter("data/employees.csv")){
+            using (StreamWriter file = new StreamWriter("data/employees.csv"))
+            {
                 // Generate the column titles for the CSV file.
                 file.WriteLine("ID,Name,PhotoURL");
 
                 // Loop over employees list and populate data fields
-                for(int i = 0; i < employees.Count; i++) {
+                for (int i = 0; i < employees.Count; i++)
+                {
                     //Write each employee to the file
                     string template = "{0}, {1}, {2}";
                     file.WriteLine(String.Format(
-                        template, 
+                        template,
                         employees[i].getId(),
                         employees[i].getFullName(),
                         employees[i].getPhotoUrl()
@@ -78,6 +83,24 @@ namespace CatWorx.BadgeMaker
                     );
                 }
             };
+        }
+
+        // Create Badges 
+        public static void MakeBadges(List<Employee> employees)
+        {
+            //import the badge template image file that will work as the background
+            SKImage newImage = SKImage.FromEncodedData(File.OpenRead("badge.png"));
+
+            //use the Encode() method to encode the image in a png format.
+            SKData data = newImage.Encode();
+
+            // Save the SKImage encoded data into a file employeeBadge
+            data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
+
+            //customize each employee badge by adding specific info to each employee
+            //(name, picture, id number)
+
+            //add the new image file to the data folder.
         }
     }
     class Program
@@ -88,6 +111,7 @@ namespace CatWorx.BadgeMaker
             List<Employee> employees = Util.GetEmployees();
             Util.PrintEmployees(employees);
             Util.MakeCSV(employees);
+            Util.MakeBadges(employees);
         }
     }
 }

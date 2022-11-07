@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "a2Guk4DPDJVgEmIy1ybFi0HdJGwnvSNGnU/i5x42q2veKhsQvs67EwLQMRzOXmklZey/uW2h4PABtso8LmcwFA==",
+  "dgSpecHash": "eyB2nNRGYuHv7qHpZlUDuNVbdbK1rgMnJH6sQHnGcobNokljj+GL1MNntKFtpTtK7LA7A/k8R9B16S42w+BB3A==",
   "success": true,
-  "projectFilePath": "/Users/felixgilbertcagatin/Desktop/CatWorx/CatWorx.BadgeMaker/CatWorx.BadgeMaker.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\cagat\\Desktop\\CatWorx\\CatWorx.BadgeMaker\\CatWorx.BadgeMaker.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cagat\\.nuget\\packages\\skiasharp\\2.88.0\\skiasharp.2.88.0.nupkg.sha512",
+    "C:\\Users\\cagat\\.nuget\\packages\\skiasharp.nativeassets.macos\\2.88.0\\skiasharp.nativeassets.macos.2.88.0.nupkg.sha512",
+    "C:\\Users\\cagat\\.nuget\\packages\\skiasharp.nativeassets.win32\\2.88.0\\skiasharp.nativeassets.win32.2.88.0.nupkg.sha512",
+    "C:\\Users\\cagat\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
   "logs": []
 }
