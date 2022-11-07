@@ -62,9 +62,10 @@ namespace CatWorx.BadgeMaker
 
             // Use StreamWriter class to create a employees csv file
             using (StreamWriter file = new StreamWriter("data/employees.csv")){
+                // Generate the column titles for the CSV file.
                 file.WriteLine("ID,Name,PhotoURL");
 
-                // Loop over employees list
+                // Loop over employees list and populate data fields
                 for(int i = 0; i < employees.Count; i++) {
                     //Write each employee to the file
                     string template = "{0}, {1}, {2}";
