@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Net.Http;
 using SkiaSharp;
+using System.Threading.Tasks;
 
 namespace CatWorx.BadgeMaker
 {
@@ -87,36 +88,51 @@ namespace CatWorx.BadgeMaker
         }
 
         // Create Badges 
-        public static void MakeBadges(List<Employee> employees)
+        async public static Task MakeBadges(List<Employee> employees)
         {
+            int BADGE_WIDTH = 669;
+            int BADGE_HEIGHT = 1044;
+
+            int PHOTO_LEFT_X = 184;
+            int PHOTO_TOP_Y = 215;
+            int PHOTO_RIGHT_X = 486;
+            int PHOTO_BOTTOM_Y = 517;
+
+            // Here, we use HttpClient to import/download employee info from the employee list.
+            // Can also be used to send HTTP requests, read files, download webpages, upload data from a resource, etc. 
             using (HttpClient client = new HttpClient())
             {
                 for (int i = 0; i < employees.Count; i++)
                 {
+                    // Retrieve each employee image and convert it into a SKImage.
+                    // We use the HttpClient.GetStreamAsync() method to send a GET request to the specified URI and return 
+                    // the response as a Stream object. 
+                    SKImage photo = SKImage.FromEncodedData(await client.GetStreamAsync(employees[i].getPhotoUrl()));
+                    SKImage background = SKImage.FromEncodedData(File.OpenRead("badge.png"));
 
+                    // use SKBitmap to create a canvas to place images and text. 
+                    SKBitmap badge = new SKBitmap(BADGE_WIDTH, BADGE_HEIGHT);
+
+                    // use SKCanvas to convert the Bitmap to a canvas.
+                    SKCanvas canvas = new SKCanvas(badge);
+
+                    // Draw the background on the badge
+                    canvas.DrawImage(
+                        background,
+                        new SKRect(0, 0, BADGE_WIDTH, BADGE_HEIGHT)
+                    );
+
+                    // Draw the photo onto the badge
+                    canvas.DrawImage(
+                        photo,
+                        new SKRect(PHOTO_LEFT_X, PHOTO_TOP_Y, PHOTO_RIGHT_X, PHOTO_BOTTOM_Y)
+                    );
+
+                    SKImage finalImage = SKImage.FromBitmap(badge);
+                    SKData data = finalImage.Encode();
+                    data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
                 }
-                // place employee picture onto badge template
-
-                // write company name
-
-                // write employee name
-
-                //create new file
             }
-
-            //import the badge template image file that will work as the background
-            SKImage newImage = SKImage.FromEncodedData(File.OpenRead("badge.png"));
-
-            //use the Encode() method to encode the image in a png format.
-            SKData data = newImage.Encode();
-
-            // Save the SKImage encoded data into a file employeeBadge
-            data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
-
-            //customize each employee badge by adding specific info to each employee
-            //(name, picture, id number)
-
-            //add the new image file to the data folder.
         }
     }
 }
