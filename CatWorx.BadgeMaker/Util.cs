@@ -98,6 +98,11 @@ namespace CatWorx.BadgeMaker
             int PHOTO_RIGHT_X = 486;
             int PHOTO_BOTTOM_Y = 517;
 
+            int COMPANY_NAME_Y = 150;
+            int EMPLOYEE_NAME_Y = 600;
+
+            int EMPLOYEE_ID_Y = 730;
+
             // Here, we use HttpClient to import/download employee info from the employee list.
             // Can also be used to send HTTP requests, read files, download webpages, upload data from a resource, etc. 
             using (HttpClient client = new HttpClient())
@@ -126,6 +131,39 @@ namespace CatWorx.BadgeMaker
                     canvas.DrawImage(
                         photo,
                         new SKRect(PHOTO_LEFT_X, PHOTO_TOP_Y, PHOTO_RIGHT_X, PHOTO_BOTTOM_Y)
+                    );
+
+                    SKPaint paint = new SKPaint();
+                    paint.TextSize = 42.0f;
+                    paint.IsAntialias = true;
+                    paint.Color = SKColors.White;
+                    paint.IsStroke = false;
+                    paint.TextAlign = SKTextAlign.Center;
+                    paint.Typeface = SKTypeface.FromFamilyName("Arial");
+
+                    canvas.DrawText(
+                        employees[i].getCompanyName(),
+                        BADGE_WIDTH / 2f,
+                        COMPANY_NAME_Y,
+                        paint
+                    );
+
+                    // Employee name
+                    paint.Color = SKColors.Black;
+                    canvas.DrawText(
+                        employees[i].getFullName(),
+                        BADGE_WIDTH / 2f,
+                        EMPLOYEE_NAME_Y,
+                        paint
+                    );
+
+                    // Employee ID
+                    paint.Typeface = SKTypeface.FromFamilyName("Courier New");
+                    canvas.DrawText(
+                        employees[i].getId().ToString(),
+                        BADGE_WIDTH / 2f,
+                        EMPLOYEE_ID_Y,
+                        paint
                     );
 
                     SKImage finalImage = SKImage.FromBitmap(badge);
