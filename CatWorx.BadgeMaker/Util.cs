@@ -89,6 +89,21 @@ namespace CatWorx.BadgeMaker
         // Create Badges 
         public static void MakeBadges(List<Employee> employees)
         {
+            using (HttpClient client = new HttpClient())
+            {
+                for (int i = 0; i < employees.Count; i++)
+                {
+
+                }
+                // place employee picture onto badge template
+
+                // write company name
+
+                // write employee name
+
+                //create new file
+            }
+
             //import the badge template image file that will work as the background
             SKImage newImage = SKImage.FromEncodedData(File.OpenRead("badge.png"));
 
