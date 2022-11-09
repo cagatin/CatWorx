@@ -25,7 +25,13 @@ namespace CatWorx.BadgeMaker
                 // Each token represents pieces of the JSON data after being parsed. 
                 foreach (JToken token in json.SelectToken("results")!)
                 {
-                    Console.WriteLine(token.SelectToken("name.first"));
+                    Employee emp = new Employee(
+                        token.SelectToken("name.first")!.ToString(),
+                        token.SelectToken("name.last")!.ToString(),
+                        Int32.Parse(token.SelectToken("id.value")!.ToString().Replace("-", "")),
+                        token.SelectToken("picture.large").ToString()
+                    );
+                    employees.Add(emp);
                 }
             }
 
