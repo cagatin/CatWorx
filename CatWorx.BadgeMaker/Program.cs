@@ -10,7 +10,8 @@ namespace CatWorx.BadgeMaker
         async static Task Main(string[] args)
         {
             // Create and list to store employee names
-            List<Employee> employees = Util.GetEmployees();
+            List<Employee> employees = await PeopleFetcher.GetFromAPI();
+
             Util.PrintEmployees(employees);
             Util.MakeCSV(employees);
             await Util.MakeBadges(employees);

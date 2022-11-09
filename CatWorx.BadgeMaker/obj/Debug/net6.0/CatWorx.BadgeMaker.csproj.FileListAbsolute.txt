@@ -34,3 +34,4 @@ C:\Users\cagat\Desktop\CatWorx\CatWorx.BadgeMaker\bin\Debug\net6.0\runtimes\win-
 C:\Users\cagat\Desktop\CatWorx\CatWorx.BadgeMaker\obj\Debug\net6.0\CatWorx.BadgeMaker.csproj.CopyComplete
 C:\Users\cagat\Desktop\CatWorx\CatWorx.BadgeMaker\obj\Debug\net6.0\CatWorx.BadgeMaker.genruntimeconfig.cache
 C:\Users\cagat\Desktop\CatWorx\CatWorx.BadgeMaker\obj\Debug\net6.0\ref\CatWorx.BadgeMaker.dll
+C:\Users\cagat\Desktop\CatWorx\CatWorx.BadgeMaker\bin\Debug\net6.0\Newtonsoft.Json.dll
